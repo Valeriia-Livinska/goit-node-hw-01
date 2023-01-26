@@ -21,6 +21,9 @@ async function getContactById(contactId) {
   try {
     const contactsArr = await listContacts(contactsPath);
     const searchedContact = contactsArr.find((obj) => obj.id === contactId);
+    if (!searchedContact) {
+      return null;
+    }
     return searchedContact;
   } catch (error) {
     console.log(error);
